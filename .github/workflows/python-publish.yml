@@ -66,3 +66,4 @@ jobs:
           files: out/lpu-wifi-autologin.exe
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  

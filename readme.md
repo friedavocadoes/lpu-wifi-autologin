@@ -13,8 +13,9 @@ A simple Python script to automate login to LPU WiFi network.
 > You can safely ignore this warning.
 
 3. Enter your LPU credentials when prompted.
-   > [!NOTE]
-   > You will only need to input credentials on the first login, after that everytime you run the exe, it will automatically log you in.
+
+> [!NOTE]
+> You will only need to input credentials on the first login, after that everytime you run the exe, it will automatically log you in.
 
 ## For Contributors
 

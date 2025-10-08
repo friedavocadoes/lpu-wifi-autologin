@@ -1,10 +1,25 @@
 import time
+import threading
 from pywifi import PyWiFi, const, Profile
 
 TARGET_SUBSTRING = "LPU"
 PASSWORD = "123456789a"
 SCAN_TIMEOUT = 8
 CONNECT_TIMEOUT = 20
+
+def spinner(stop_event, tv=1):
+    txt = ""
+    if tv==1:
+        txt = "\rLogging in... "
+    else:
+        txt = "\rFinding WiFi Networks... "
+
+    while not stop_event.is_set():
+        for c in "|/-\\":
+            print(f"{txt}{c}", end="", flush=True)
+            time.sleep(0.1)
+    print("\r", end="", flush=True)  
+
 
 def get_iface():
     wifi = PyWiFi()
@@ -72,7 +87,14 @@ def main():
     if already_connected(iface, TARGET_SUBSTRING):
         return
 
+    stop_event = threading.Event()
+    t = threading.Thread(target=spinner, args=(stop_event, 2))
+    t.start()
+
     ssid = find_ssid(iface, TARGET_SUBSTRING)
+
+    stop_event.set()
+    t.join()
     if not ssid:
         print(f"No SSID matching '{TARGET_SUBSTRING}' found.")
         return
@@ -83,6 +105,8 @@ def main():
         print(f"✅ Connected to {ssid}")
     else:
         print(f"❌ Failed to connect to {ssid} within timeout.")
+
+    
 
 if __name__ == "__main__":
     main()

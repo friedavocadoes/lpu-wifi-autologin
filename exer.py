@@ -4,15 +4,9 @@ import requests
 from pathlib import Path
 import wifi_con
 
+
 URL = "https://internet.lpu.in/24online/servlet/E24onlineHTTPClient"
 CONFIG_FILE = Path.home() / ".lpu_login.txt"  # gets saved as C:\Users\<you>\.lpu_login.txt on Windows
-
-def spinner(stop_event):
-    while not stop_event.is_set():
-        for c in "|/-\\":
-            print(f"\rLogging in... {c}", end="", flush=True)
-            time.sleep(0.1)
-    print("\r", end="", flush=True)  
 
 def read_creds():
     if not CONFIG_FILE.exists():
@@ -35,6 +29,7 @@ def ask_creds():
     username = username + "@lpu.com"
     write_creds(username, password)
     print("Credentials saved to", CONFIG_FILE)
+    time.sleep(5)
     return username, password
 
 def attempt_login(username, password):
@@ -54,7 +49,7 @@ def attempt_login(username, password):
     }
 
     stop_event = threading.Event()
-    t = threading.Thread(target=spinner, args=(stop_event,))
+    t = threading.Thread(target=wifi_con.spinner, args=(stop_event,))
     t.start()
 
 
@@ -63,18 +58,21 @@ def attempt_login(username, password):
         stop_event.set()
         t.join()
         text = r.text.lower()
-        if r.status_code == 200 and ("successfully logged in" in text):
+        if r.status_code == 200 and ("check your usage" in text):
             print("[+] Logged in successfully.")
         else:
             print("[-] Login might have failed (check credentials or network).")
             print("Response code:", r.status_code)
+            time.sleep(5)
     except Exception as e:
         stop_event.set()
         t.join()
         print("[-] Error:", e)
+        time.sleep(5)
 
 def main():
     wifi_con.main()
+
     username, password = read_creds()
     if not username or not password:
         print("No saved credentials found.")

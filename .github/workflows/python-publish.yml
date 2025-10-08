@@ -59,9 +59,10 @@ jobs:
           body: |
             Automated build created using GitHub actions from commit: ${{ github.sha }}.
 
-            Download and run `lpu-wifi-autologin.exe`.
+            ## Click on `lpu-wifi-autologin.exe` to download and then run it.
             > [!WARNING]
             > If windows blue screen warning pops up, `More info` -> `Run Anyway`.
+
           files: out/lpu-wifi-autologin.exe
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

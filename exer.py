@@ -31,8 +31,10 @@ def write_creds(username, password):
     CONFIG_FILE.write_text(f"{username}\n{password}", encoding="utf-8")
 
 def ask_creds():
-    username = input("Enter your WiFi username (eg. 1222332@lpu.com): ").strip()
+    username = input("Enter your Registration Number (eg. 1222332): ").strip()
     password = input("Enter your WiFi password: ").strip()
+    username = username + "@lpu.com"
+    print(username)
     write_creds(username, password)
     print("Credentials saved to", CONFIG_FILE)
     return username, password
@@ -57,12 +59,13 @@ def attempt_login(username, password):
     t = threading.Thread(target=spinner, args=(stop_event,))
     t.start()
 
+
     try:
         r = requests.post(URL, data=payload, headers=headers, timeout=15)
         stop_event.set()
         t.join()
         text = r.text.lower()
-        if r.status_code == 200 and ("logout" in text or "welcome" in text or "you are connected" in text):
+        if r.status_code == 200 and ("successfully logged in" in text):
             print("[+] Logged in successfully.")
         else:
             print("[-] Login might have failed (check credentials or network).")

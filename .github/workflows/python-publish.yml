@@ -32,6 +32,7 @@ jobs:
 
           # build single-file exe; --log-level=INFO can be reduced/expanded
           pyinstaller --onefile --noconfirm icon="assets/2.ico" exer.py
+
         shell: bash
 
       - name: Rename and move exe
@@ -66,4 +67,3 @@ jobs:
           files: out/lpu-wifi-autologin.exe
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  

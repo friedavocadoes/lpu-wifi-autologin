@@ -1,8 +1,10 @@
 # Auto Login to LPU WiFi
 
-A simple Python script to automate login to LPU WiFi network.
+A simple Python script to automate login to LPU WiFi networks like `LPU Hostels`, `LPUWIRELESS`, `LPU Block-34`, etc.
 
-## How to Use (Read the whole thing T-T)
+### I assure you there are no kinds of spyware or data stealers in this script, you may check the code yourself or use AI to verify safety.
+
+## How to Use (Read the whole thing pls)
 
 1. Download the lastest Release of `lpu-wifi-autologin.exe` from [Releases](https://github.com/friedavocadoes/lpu-wifi-autologin/releases).
 
@@ -19,9 +21,7 @@ A simple Python script to automate login to LPU WiFi network.
 
 ## For Contributors
 
-<!-- prettier-ignore -->
-> [!NOTE]
-> `exer.py` is used to build the `.exe` file during packaging. Use `run.py` to raw run using python and check out logic.
+`exer.py` is used to build the `.exe` file during packaging. Use `run.py` to raw run using python and check out logic.
 
 ### Commands to work with:
 

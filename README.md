@@ -1,7 +1,7 @@
 # Connect & Auto Login to closest LPU WiFi [Windows only]
 
 
-\n\n<!-- BEGIN LATEST DOWNLOAD BUTTON -->
+<!-- BEGIN LATEST DOWNLOAD BUTTON -->
 <!-- END LATEST DOWNLOAD BUTTON -->
 
 

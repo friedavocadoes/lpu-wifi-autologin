@@ -5,6 +5,10 @@ on:
     branches: [main]
   workflow_dispatch:
 
+permissions:
+  id-token: write
+  contents: write
+
 jobs:
   build-exe:
     runs-on: windows-latest

@@ -53,14 +53,14 @@ jobs:
           path: out/exer-windows.zip
 
 
-      - name: Create tag
-        id: tag
-        run: |
-          git fetch --tags
-          tag_name="build-${{ github.run_number }}"
-          git tag $tag_name
-          git push origin $tag_name
-          echo "tag_name=$tag_name" >> $GITHUB_ENV
+      # - name: Create tag
+      #   id: tag
+      #   run: |
+      #     git fetch --tags
+      #     tag_name="build-${{ github.run_number }}"
+      #     git tag $tag_name
+      #     git push origin $tag_name
+      #     echo "tag_name=$tag_name" >> $GITHUB_ENV
 
       # - name: Create GitHub Tag
       # # uses: qoomon/actions--create-tag@bc18da911783e8dd24a7ae3ec1a95af941d29f60

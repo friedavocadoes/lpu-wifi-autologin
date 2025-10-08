@@ -74,29 +74,25 @@ jobs:
       #     token: ${{ github.token }}
           
 
-      # - name: Create GitHub Release
-        # uses: softprops/action-gh-release@v1
-        # with:
-        #   tag_name: ${{ env.tag_name }}
-        #   name: "Auto Build ${{ env.tag_name }}"
-        #   body: "Automated build from commit ${{ github.sha }}"
-        # env:
-        #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        
-      - name: Create Release
-        id: create_release
-        uses: comnoco/create-release-action@v2.0.5
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-          body: |
-            Changes in this Release
-            - First Change
-            - Second Change
-          draft: false
-          prerelease: false
+          name: "Auto Build ${{ github.ref }}"
+          body: "Automated build from commit ${{ github.sha }}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
+      # - name: Create Release
+      #   id: create_release
+      #   uses: comnoco/create-release-action@v2.0.5
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+      #   with:
+      #     tag_name: ${{ github.ref }}
+      #     release_name: Release ${{ github.ref }}
+      #     draft: false
+      #     prerelease: false
 
 
       - name: Upload release asset (optional)

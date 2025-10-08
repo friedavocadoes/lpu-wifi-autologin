@@ -3,8 +3,6 @@ name: Build EXE (Windows)
 on:
   push:
     branches: [ main ]
-    tags:
-      - 'v*' 
   workflow_dispatch:
 
 jobs:
@@ -78,8 +76,9 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ github.run_number }}
-          name: "Auto Build ${{ github.ref }}"
+          name: "Auto Build ${{ github.run_number }}"
           body: "Automated build from commit ${{ github.sha }}"
+          files: out/exer-windows.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         

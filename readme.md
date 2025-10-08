@@ -7,7 +7,8 @@ A simple Python script to automate login to LPU WiFi network.
 Download the lastest Release of `lpu-wifi-autologin.exe` from [Releases](https://github.com/friedavocadoes/lpu-wifi-autologin/releases)
 
 > [!CAUTION]
-> Windows might display a warning when you try to run the exe file. This is because the file is not signed. You can safely ignore this warning.
+> Windows might display a warning when you try to run the exe file. This is because the file is not signed.
+> You can safely ignore this warning.
 
 ## For Contributors
 

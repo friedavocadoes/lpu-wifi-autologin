@@ -34,43 +34,23 @@ jobs:
           pyinstaller --onefile --noconfirm exer.py
         shell: bash
 
-      - name: Zip the exe
+      - name: Rename and move exe
         run: |
           mkdir -p out
-          # On Windows runner, dist/exer.exe will exist
           if [ -f dist/exer.exe ]; then
-            powershell -Command "Compress-Archive -Path dist/exer.exe -DestinationPath out/exer-windows.zip -Force"
+            mv dist/exer.exe out/lpu-wifi-autologin.exe
           else
             echo "ERROR: dist/exer.exe not found"
             exit 1
           fi
         shell: bash
 
-      - name: Upload artifact (zip)
+      - name: Upload artifact (exe)
         uses: actions/upload-artifact@v4
         with:
-          name: exer-windows
-          path: out/exer-windows.zip
+          name: lpu-wifi-autologin
+          path: out/lpu-wifi-autologin.exe
 
-
-      # - name: Create tag
-      #   id: tag
-      #   run: |
-      #     git fetch --tags
-      #     tag_name="build-${{ github.run_number }}"
-      #     git tag $tag_name
-      #     git push origin $tag_name
-      #     echo "tag_name=$tag_name" >> $GITHUB_ENV
-
-      # - name: Create GitHub Tag
-      # # uses: qoomon/actions--create-tag@bc18da911783e8dd24a7ae3ec1a95af941d29f60
-      #   uses: qoomon/actions--create-tag@v1.0.0
-      #   with:
-      #     # The tag name
-      #     name: "v1"
-      #     # A GitHub access token
-      #     token: ${{ github.token }}
-          
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
@@ -82,23 +62,3 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
-      # - name: Create Release
-      #   id: create_release
-      #   uses: comnoco/create-release-action@v2.0.5
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
-      #   with:
-      #     tag_name: ${{ github.ref }}
-      #     release_name: Release ${{ github.ref }}
-      #     draft: false
-      #     prerelease: false
-
-
-      - name: Upload release asset (optional)
-        if: startsWith(github.ref, 'refs/heads/main')
-        uses: actions/upload-release-asset@v1
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: out/exer-windows.zip
-          asset_name: exer-windows-${{ github.sha }}.zip
-          asset_content_type: application/zip

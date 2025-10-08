@@ -1,10 +1,19 @@
 import os
 import sys
+import threading
+import time
 import requests
 from pathlib import Path
 
 URL = "https://internet.lpu.in/24online/servlet/E24onlineHTTPClient"
 CONFIG_FILE = Path.home() / ".lpu_login.txt"  # gets saved as C:\Users\<you>\.lpu_login.txt on Windows
+
+def spinner(stop_event):
+    while not stop_event.is_set():
+        for c in "|/-\\":
+            print(f"\rLogging in... {c}", end="", flush=True)
+            time.sleep(0.1)
+    print("\r", end="", flush=True)  
 
 def read_creds():
     if not CONFIG_FILE.exists():
@@ -22,8 +31,8 @@ def write_creds(username, password):
     CONFIG_FILE.write_text(f"{username}\n{password}", encoding="utf-8")
 
 def ask_creds():
-    username = input("Enter LPU username: ").strip()
-    password = input("Enter LPU password: ").strip()
+    username = input("Enter your WiFi username (eg. 1222332@lpu.com): ").strip()
+    password = input("Enter your WiFi password: ").strip()
     write_creds(username, password)
     print("Credentials saved to", CONFIG_FILE)
     return username, password
@@ -44,8 +53,14 @@ def attempt_login(username, password):
         "Content-Type": "application/x-www-form-urlencoded",
     }
 
+    stop_event = threading.Event()
+    t = threading.Thread(target=spinner, args=(stop_event,))
+    t.start()
+
     try:
         r = requests.post(URL, data=payload, headers=headers, timeout=15)
+        stop_event.set()
+        t.join()
         text = r.text.lower()
         if r.status_code == 200 and ("logout" in text or "welcome" in text or "you are connected" in text):
             print("[+] Logged in successfully.")
@@ -53,6 +68,8 @@ def attempt_login(username, password):
             print("[-] Login might have failed (check credentials or network).")
             print("Response code:", r.status_code)
     except Exception as e:
+        stop_event.set()
+        t.join()
         print("[-] Error:", e)
 
 def main():

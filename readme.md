@@ -2,7 +2,7 @@
 
 A simple Python script to automate login to LPU WiFi network.
 
-## How to Use
+## How to Use (Read the whole thing T-T)
 
 1. Download the lastest Release of `lpu-wifi-autologin.exe` from [Releases](https://github.com/friedavocadoes/lpu-wifi-autologin/releases).
 
@@ -19,7 +19,16 @@ A simple Python script to automate login to LPU WiFi network.
 
 ## For Contributors
 
+<!-- prettier-ignore -->
+> [!NOTE]
+> `exer.py` is used to build the `.exe` file during packaging. Use `run.py` to raw run using python and check out logic.
+
+### Commands to work with:
+
+> [!TIP]
+> I suggest you create a virtual environment to work with this project.
+
 1. Install required packages: `pip install -r requirements.txt`
 2. After build cleanup: `rm -rf build dist __pycache__ *.pyc`
 3. Convert to exe: `pyinstaller --onefile exer.py`
-4. Output: `dist/exer.exe`
+4. Output available in: `dist/exer.exe`

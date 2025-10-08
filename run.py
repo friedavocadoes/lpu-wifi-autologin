@@ -6,8 +6,9 @@ load_dotenv()
 
 URL = "https://internet.lpu.in/24online/servlet/E24onlineHTTPClient"
 
-USERNAME = os.getenv("LPU_USER")
-PASSWORD = os.getenv("LPU_PASS")
+USERNAME = input("Enter your WiFi username (eg. 1222332@lpu.com): ").strip()
+PASSWORD = input("Enter your WiFi password: ").strip()
+    
 
 payload = {
     "mode":"191", "isAccessDenied":"false", "url":"null", 

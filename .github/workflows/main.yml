@@ -24,7 +24,7 @@ jobs:
           GITHUB_USER: "friedavocadoes"
           REPO: "lpu-wifi-autologin"
           FORMAT: "lpu-wifi-autologin.exe"
-          VERSION: "${{ github.run_number }}"
+          VERSION: "32 + ${{ github.run_number }}"
           COLOR: "orange"
           BEGIN_TAG: "\n\n<!-- BEGIN LATEST DOWNLOAD BUTTON -->"
           END_TAG: "<!-- END LATEST DOWNLOAD BUTTON -->"

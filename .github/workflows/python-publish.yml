@@ -58,7 +58,7 @@ jobs:
           tag_name: ${{ github.run_number }}
           name: "Auto Build ${{ github.run_number }}"
           body: "Automated build from commit ${{ github.sha }}"
-          files: out/exer-windows.zip
+          files: out/lpu-wifi-autologin.exe
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         

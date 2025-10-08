@@ -21,7 +21,7 @@ A simple Python script to automate login to LPU WiFi networks like `LPU Hostels`
 
 ## For Contributors
 
-`exer.py` is used to build the `.exe` file during packaging. Use `run.py` to raw run using python and check out logic.
+`exer.py` is used to build the `.exe` file during packaging.
 
 ### Commands to work with:
 

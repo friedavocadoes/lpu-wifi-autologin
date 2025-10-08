@@ -1,9 +1,8 @@
-import os
-import sys
 import threading
 import time
 import requests
 from pathlib import Path
+import wifi_con
 
 URL = "https://internet.lpu.in/24online/servlet/E24onlineHTTPClient"
 CONFIG_FILE = Path.home() / ".lpu_login.txt"  # gets saved as C:\Users\<you>\.lpu_login.txt on Windows
@@ -34,7 +33,6 @@ def ask_creds():
     username = input("Enter your Registration Number (eg. 1222332): ").strip()
     password = input("Enter your WiFi password: ").strip()
     username = username + "@lpu.com"
-    print(username)
     write_creds(username, password)
     print("Credentials saved to", CONFIG_FILE)
     return username, password
@@ -76,6 +74,7 @@ def attempt_login(username, password):
         print("[-] Error:", e)
 
 def main():
+    wifi_con.main()
     username, password = read_creds()
     if not username or not password:
         print("No saved credentials found.")

@@ -1,6 +1,7 @@
 altgraph==0.17.4
 certifi==2025.10.5
 charset-normalizer==3.4.3
+comtypes==1.4.12
 idna==3.10
 jaraco.classes==3.4.0
 jaraco.context==6.0.1
@@ -8,9 +9,12 @@ jaraco.functools==4.3.0
 more-itertools==10.8.0
 packaging==25.0
 pefile==2023.2.7
+plumbum==1.9.0
 pyinstaller==6.16.0
 pyinstaller-hooks-contrib==2025.9
 python-dotenv==1.1.1
+pywifi==1.1.12
+pywin32==311
 pywin32-ctypes==0.2.3
 requests==2.32.5
 setuptools==80.9.0

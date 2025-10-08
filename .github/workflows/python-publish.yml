@@ -31,7 +31,7 @@ jobs:
           if [ -d dist ]; then rm -rf dist; fi
 
           # build single-file exe; --log-level=INFO can be reduced/expanded
-          pyinstaller --onefile --noconfirm exer.py
+          pyinstaller --onefile --noconfirm icon="assets/2.ico" exer.py
         shell: bash
 
       - name: Rename and move exe

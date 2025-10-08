@@ -20,23 +20,23 @@ jobs:
           myToken: ${{ github.token }}
           view_top: 1
 
-      - name: "Print result"
-        run: |
-          echo "id: ${{ steps.get-latest-release.outputs.id }}"
-          echo "name: ${{ steps.get-latest-release.outputs.name }}"
-          echo "tag_name: ${{ steps.get-latest-release.outputs.tag_name }}"
-          echo "created_at: ${{ steps.get-latest-release.outputs.created_at }}"
-          echo "draft: ${{ steps.get-latest-release.outputs.draft }}"
-          echo "prerelease: ${{ steps.get-latest-release.outputs.prerelease }}"
-          echo "url: ${{ steps.get-latest-release.outputs.url }}"
-          echo "html_url: ${{ steps.get-latest-release.outputs.html_url }}"
+      # - name: "Print result"
+      #   run: |
+      #     echo "id: ${{ steps.get-latest-release.outputs.id }}"
+      #     echo "name: ${{ steps.get-latest-release.outputs.name }}"
+      #     echo "tag_name: ${{ steps.get-latest-release.outputs.tag_name }}"
+      #     echo "created_at: ${{ steps.get-latest-release.outputs.created_at }}"
+      #     echo "draft: ${{ steps.get-latest-release.outputs.draft }}"
+      #     echo "prerelease: ${{ steps.get-latest-release.outputs.prerelease }}"
+      #     echo "url: ${{ steps.get-latest-release.outputs.url }}"
+      #     echo "html_url: ${{ steps.get-latest-release.outputs.html_url }}"
 
       - name: Readme Download Button Action
         env:
           GITHUB_USER: "friedavocadoes"
           REPO: "lpu-wifi-autologin"
           FORMAT: "lpu-wifi-autologin.exe"
-          VERSION: "${{ steps.get-latest-release.outputs.id }}"
+          VERSION: "${{ steps.get-latest-release.outputs.tag_name }}"
           COLOR: "orange"
           BEGIN_TAG: "\n\n<!-- BEGIN LATEST DOWNLOAD BUTTON -->"
           END_TAG: "<!-- END LATEST DOWNLOAD BUTTON -->"

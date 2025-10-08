@@ -31,7 +31,7 @@ jobs:
           if [ -d dist ]; then rm -rf dist; fi
 
           # build single-file exe; --log-level=INFO can be reduced/expanded
-          pyinstaller --onefile --noconfirm icon="icon.ico" exer.py
+          pyinstaller --onefile --noconfirm --icon="icon.ico" exer.py
 
         shell: bash
 

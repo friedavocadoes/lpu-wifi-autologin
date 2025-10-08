@@ -53,29 +53,29 @@ jobs:
           path: out/exer-windows.zip
 
 
-      # - name: Create tag
-      #   id: tag
-      #   run: |
-      #     git fetch --tags
-      #     tag_name="build-${{ github.run_number }}"
-      #     git tag $tag_name
-      #     git push origin $tag_name
-      #     echo "tag_name=$tag_name" >> $GITHUB_ENV
+      - name: Create tag
+        id: tag
+        run: |
+          git fetch --tags
+          tag_name="build-${{ github.run_number }}"
+          git tag $tag_name
+          git push origin $tag_name
+          echo "tag_name=$tag_name" >> $GITHUB_ENV
 
-      - name: Create GitHub Tag
-      # uses: qoomon/actions--create-tag@bc18da911783e8dd24a7ae3ec1a95af941d29f60
-        uses: qoomon/actions--create-tag@v1.0.0
-        with:
-          # The tag name
-          name: "v1"
-          # A GitHub access token
-          token: ${{ github.token }}
+      # - name: Create GitHub Tag
+      # # uses: qoomon/actions--create-tag@bc18da911783e8dd24a7ae3ec1a95af941d29f60
+      #   uses: qoomon/actions--create-tag@v1.0.0
+      #   with:
+      #     # The tag name
+      #     name: "v1"
+      #     # A GitHub access token
+      #     token: ${{ github.token }}
           
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: ${{ env.tag_name }}
+          tag_name: "build-${{ github.run_number }}"
           name: "Auto Build ${{ env.tag_name }}"
           body: "Automated build from commit ${{ github.sha }}"
         env:

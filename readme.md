@@ -4,11 +4,17 @@ A simple Python script to automate login to LPU WiFi network.
 
 ## How to Use
 
-Download the lastest Release of `lpu-wifi-autologin.exe` from [Releases](https://github.com/friedavocadoes/lpu-wifi-autologin/releases)
+1. Download the lastest Release of `lpu-wifi-autologin.exe` from [Releases](https://github.com/friedavocadoes/lpu-wifi-autologin/releases).
+
+2. Run the `lpu-wifi-autologin.exe` file.
 
 > [!CAUTION]
 > Windows might display a warning when you try to run the exe file. This is because the file is not signed.
 > You can safely ignore this warning.
+
+3. Enter your LPU credentials when prompted.
+   > [!NOTE]
+   > You will only need to input credentials on the first login, after that everytime you run the exe, it will automatically log you in.
 
 ## For Contributors
 

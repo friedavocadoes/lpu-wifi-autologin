@@ -1,2 +1,22 @@
-/venv
+# python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+
+# venv
+venv/
 .env
+
+# pyinstaller
+build/
+dist/
+*.spec
+*.exe
+
+# debug / editor
+debug_*.html
+*.log
+.idea/
+.vscode/

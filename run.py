@@ -34,6 +34,4 @@ else:
     # print short diagnostics
     print("Response code:", r.status_code)
     print("Response length:", len(r.text))
-    # Optionally save the page to debug
-    open("debug_login_response.html", "w", encoding="utf-8").write(r.text)
-    print("Saved debug_login_response.html for inspection.")
+

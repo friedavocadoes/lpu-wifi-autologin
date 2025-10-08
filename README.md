@@ -2,6 +2,7 @@
 
 
 <!-- BEGIN LATEST DOWNLOAD BUTTON -->
+[![Download lpu-wifi-autologin.exe](https://custom-icon-badges.demolab.com/badge/-Download-orange?style=for-the-badge&logo=download&logoColor=white "Download lpu-wifi-autologin.exe")](https://github.com/friedavocadoes/lpu-wifi-autologin/releases/download//lpu-wifi-autologin.exe)
 <!-- END LATEST DOWNLOAD BUTTON -->
 
 

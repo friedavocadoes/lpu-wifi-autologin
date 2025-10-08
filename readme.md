@@ -1,5 +1,10 @@
 # Connect & Auto Login to closest LPU WiFi [Windows only]
 
+
+<!-- BEGIN LATEST DOWNLOAD BUTTON -->
+<!-- END LATEST DOWNLOAD BUTTON -->
+
+
 A simple Python script to automate login to LPU WiFi networks like `LPU Hostels`, `LPUWIRELESS`, `LPU Block-34`, etc.
 
 ### I assure you there are no kinds of spyware or data stealers in this script, you may check the code yourself or use AI to verify safety.

@@ -52,13 +52,25 @@ jobs:
           name: exer-windows
           path: out/exer-windows.zip
 
-      - name: Create GitHub Release & upload EXE (optional)
-        if: startsWith(github.ref, 'refs/heads/main')
+
+      - name: Create tag
+        id: tag
+        run: |
+          git fetch --tags
+          tag_name="build-${{ github.run_number }}"
+          git tag $tag_name
+          git push origin $tag_name
+          echo "tag_name=$tag_name" >> $GITHUB_ENV
+
+      - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
         with:
+          tag_name: ${{ env.tag_name }}
+          name: "Auto Build ${{ env.tag_name }}"
           body: "Automated build from commit ${{ github.sha }}"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
 
       - name: Upload release asset (optional)
         if: startsWith(github.ref, 'refs/heads/main')
